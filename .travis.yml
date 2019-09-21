@@ -1,0 +1,22 @@
+language: 
+  - swift
+osx_image: xcode10.1
+env: 
+  - SCHEME="Grocr"
+  - DESTINATION="platform=iOS Simulator,OS=12.1,name=iPhone XR"
+  - BUILDPATH="./build"
+  # - ARCHIVE="./out"
+  # - PROVISIONING_PROFILE="dist.mobileprovision"
+
+before_install:
+- pod install
+- gem install xcpretty --quiet
+
+# xcode_project: Grocr.xcodeproj
+# xcode_workspace: Grocr.xcworkspace
+# xcode_scheme: Grocr
+# xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone XR
+# - OR -
+script:
+  - xcodebuild clean build -workspace Grocr.xcworkspace -scheme $SCHEME -destination "$DESTINATION" -derivedDataPath $BUILDPATH | xcpretty
+  # - xcodebuild clean archive -workspace Grocr.xcworkspace -scheme $SCHEME -configuration Release  -destination "$DESTINATION" -derivedDataPath $BUILDPATH -archivePath $ARCHIVE PROVISIONING_PROFILE="$PROVISIONING_PROFILE" | xcpretty
