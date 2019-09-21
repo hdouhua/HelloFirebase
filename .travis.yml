@@ -10,7 +10,8 @@ env:
 before_install:
   - gem install cocoapods xcpretty --quiet
   - pod install --repo-update
-  - ./output-google-service-info.sh
+  # - chmod 744 output-google-service-info.sh && ./output-google-service-info.sh
+  - sh output-google-service-info.sh
 
 # xcode_project: Grocr.xcodeproj
 # xcode_workspace: Grocr.xcworkspace

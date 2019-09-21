@@ -1,5 +1,7 @@
 # HelloFirebase
 
+[![Build Status](https://travis-ci.org/hdouhua/HelloFirebase.svg?branch=master)](https://travis-ci.org/hdouhua/HelloFirebase)
+
 This is a demo using `Firebase`, which includes the parts below
 - realtime database
 - authentication
