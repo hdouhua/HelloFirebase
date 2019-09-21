@@ -2,15 +2,12 @@ language:
   - swift
 osx_image: xcode10.1
 env: 
-  - SCHEME="Grocr"
-  - DESTINATION="platform=iOS Simulator,OS=12.1,name=iPhone XR"
-  - BUILDPATH="./build"
-  # - ARCHIVE="./out"
-  # - PROVISIONING_PROFILE="dist.mobileprovision"
+  - SCHEME="Grocr" DESTINATION="platform=iOS Simulator,OS=12.1,name=iPhone XR" BUILDPATH="./build"
+  # ARCHIVE="./out" PROVISIONING_PROFILE="dist.mobileprovision"
 
 before_install:
-- pod install
-- gem install xcpretty --quiet
+  - pod install --repo-update
+  - gem install xcpretty --quiet
 
 # xcode_project: Grocr.xcodeproj
 # xcode_workspace: Grocr.xcworkspace
