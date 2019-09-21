@@ -1,13 +1,16 @@
 language: 
   - swift
 osx_image: xcode10.1
+cache:
+  - cocoapods
 env: 
   - SCHEME="Grocr" DESTINATION="platform=iOS Simulator,OS=12.1,name=iPhone XR" BUILDPATH="./build"
   # ARCHIVE="./out" PROVISIONING_PROFILE="dist.mobileprovision"
 
 before_install:
+  - gem install cocoapods xcpretty --quiet
   - pod install --repo-update
-  - gem install xcpretty --quiet
+  - ./output-google-service-info.sh
 
 # xcode_project: Grocr.xcodeproj
 # xcode_workspace: Grocr.xcworkspace
@@ -15,5 +18,5 @@ before_install:
 # xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone XR
 # - OR -
 script:
-  - xcodebuild clean build -workspace Grocr.xcworkspace -scheme $SCHEME -destination "$DESTINATION" -derivedDataPath $BUILDPATH | xcpretty
-  # - xcodebuild clean archive -workspace Grocr.xcworkspace -scheme $SCHEME -configuration Release  -destination "$DESTINATION" -derivedDataPath $BUILDPATH -archivePath $ARCHIVE PROVISIONING_PROFILE="$PROVISIONING_PROFILE" | xcpretty
+  - xcodebuild clean build -workspace Grocr.xcworkspace -scheme $SCHEME -destination "$DESTINATION" -derivedDataPath $BUILDPATH | xcpretty -c
+  # - xcodebuild clean archive -workspace Grocr.xcworkspace -scheme $SCHEME -configuration Release  -destination "$DESTINATION" -derivedDataPath $BUILDPATH -archivePath $ARCHIVE PROVISIONING_PROFILE="$PROVISIONING_PROFILE" | xcpretty -c
